@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BlockCaller"
+             x:Class="BlockCaller.MainPage">
+
+    <!--<Button Text="Block Some Call"
+           VerticalOptions="Start" 
+           HorizontalOptions="Fill" />
+
+    <Button Text="Block All Calls Except Few" 
+           HorizontalOptions="Fill" />
+
+    <Button Text="Block Calls Based On Starting Digits" 
+           HorizontalOptions="Fill" />
+
+
+    <Switch Text="Block All Calls" 
+           HorizontalOptions="Fill" />-->
+
+</TabbedPage>

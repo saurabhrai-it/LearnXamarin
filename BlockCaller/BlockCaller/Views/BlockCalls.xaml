@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BlockCaller.Views.BlockCalls">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Block Some Call" Clicked="BlockSome"
+           VerticalOptions="Start" 
+           HorizontalOptions="Fill" />
+
+            <Button Text="Block All Calls Except Few" Clicked="BlockAllExceptFew"
+           HorizontalOptions="Fill" />
+
+            <Button Text="Block Calls Based On Starting Digits"  Clicked="BlockAllByStartDigit"
+           HorizontalOptions="Fill" />
+
+
+            <Button Text="Block All Calls" Clicked="BlockAll"
+              HorizontalOptions="Fill" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BlockCaller.TriggerActions"
+             x:Class="BlockCaller.Views.EnterNumberPage"
+             BackgroundColor="{StaticResource BlackBackgroundColor}"
+             >
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center"  BackgroundColor="{StaticResource LightBackgroundColor}" Padding="40">
+          <StackLayout  Orientation="Horizontal">
+            <Entry x:Name="phCode" Keyboard="Numeric" Text="+91"  HorizontalOptions="Start" VerticalOptions="Center" WidthRequest="50"/>
+            <Entry x:Name="phoneNumber" Keyboard="Numeric" Placeholder="Enter Phone Number" Text="" local:PhoneNumberValidationBehavior.AttachBehavior="true">
+                <!--<Entry.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="BackgroundColor" Value="{StaticResource LightBackgroundColor}" />
+                        <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+                    </Trigger>
+                    <EventTrigger Event="TextChanged">
+                        <local:PhoneNumberValidation/>
+                    </EventTrigger>
+                </Entry.Triggers>-->
+            </Entry>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+
+                <Button Text="Cancel" Clicked="cancelDialog"/>
+                <Button x:Name="Submit" Text="Submit" Clicked="fetchNumber">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" Binding="{Binding Source={x:Reference phoneNumber},Path=Text.Length}" Value="0">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Button.Triggers>
+              </Button>
+           </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="1" android:versionName="gunshot">
+	<uses-sdk android:minSdkVersion="15" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+	<uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+	<uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+	<uses-permission android:name="android.permission.READ_CALL_LOG" />
+	<uses-permission android:name="android.permission.READ_SMS" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+  <receiver android:name=".CallReciever">
+		<!--<intent-filter android:priority="2147483647">
+			<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+			<action android:name="com.alr.text" />
+			<category android:name="android.intent.category.DEFAULT" />
+		</intent-filter>-->
+	</receiver>
+	<application android:label="BlockCaller.Android" android:icon="@drawable/home"></application>
+</manifest>
