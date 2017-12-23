@@ -1,6 +1,8 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BlockCaller.ViewModel;
+using System;
+using BlockCaller.Model;
 
 namespace BlockCaller.Views
 {
@@ -17,6 +19,14 @@ namespace BlockCaller.Views
             BindingContext = callLogs;
         }
 
+        async void CallLog_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
+            var selectedItem = e.SelectedItem as PhoneNumber;
+            await DisplayAlert("Block "+ selectedItem.NameInCallLog+" !","Phone Number :  "+selectedItem.phoneNumberofCallLog+" ?", "OK","Cancel");
+            NumberToBlock.numberToBlock.Add(selectedItem.phoneNumberofCallLog);
+        }
 
         //async void Handle_ItemTapped(object sender, SelectedItemChangedEventArgs e)
         //{

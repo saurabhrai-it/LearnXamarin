@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Android.Telephony;
 using BlockCaller.Views;
+using BlockCaller.Model;
 
 namespace BlockCaller.Droid
 {
@@ -28,7 +29,7 @@ namespace BlockCaller.Droid
                     string telephone = intent.GetStringExtra(TelephonyManager.ExtraIncomingNumber);
                     if (!string.IsNullOrEmpty(telephone))
                     {
-                        if (EnterNumberPage.numberToBlock.IndexOf(telephone) > -1)
+                        if (NumberToBlock.numberToBlock.IndexOf(telephone) > -1)
                         {
 
                             var manager = (TelephonyManager)context.GetSystemService(Context.TelephonyService);

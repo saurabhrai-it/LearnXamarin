@@ -8,11 +8,14 @@
             <Label Text="Call Logs" FontSize="Large" />
 
             <ListView ItemsSource="{Binding PhoneNumbers}"
-                        CachingStrategy="RecycleElement"
-                        x:Name="CallLog">
+                      CachingStrategy="RecycleElement"
+                      x:Name="CallLog"
+                      IsPullToRefreshEnabled="True"
+                      ItemTapped="CallLog_ItemSelected"
+                      >
                <ListView.ItemTemplate>
                  <DataTemplate>
-                   <ViewCell>
+                        <ViewCell>
                             <ViewCell.View>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding NameInCallLog}"

@@ -12,10 +12,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)db\IFileHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)db\ISQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)db\PhoneNumberDB.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Model\NumberToBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\PhoneNumber.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TriggerActions\PhoneNumberValidation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TriggerActions\PhoneNumberValidationBehavior.cs" />

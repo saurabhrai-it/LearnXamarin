@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlockCaller.Model;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +13,6 @@ namespace BlockCaller.Views
 		{
 			InitializeComponent ();
 		}
-        public static ArrayList numberToBlock= new ArrayList();
         async void fetchNumber(object sender, EventArgs e)
         {
             string phNum = phCode.Text + phoneNumber.Text;
@@ -28,8 +23,8 @@ namespace BlockCaller.Views
                     "Do you want to block " + phNum + "?",
                     "Yes",
                     "No"))
-            {   
-                numberToBlock.Add(phNum);
+            {
+                NumberToBlock.numberToBlock.Add(phNum);
                 await this.DisplayAlert("Hurray!!!",phNum+" is blocked successfully!!!","OK");
                 await Navigation.PopModalAsync();
             }
