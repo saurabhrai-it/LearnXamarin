@@ -5,6 +5,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin Forms!" />
+            <Button Text="Get DB"  Clicked="getMyDataAsync"
+           HorizontalOptions="Fill" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

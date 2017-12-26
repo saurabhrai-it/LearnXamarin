@@ -1,4 +1,5 @@
 ﻿using BlockCaller.Model;
+using BlockCaller.ViewModel;
 using System;
 
 using Xamarin.Forms;
@@ -24,7 +25,11 @@ namespace BlockCaller.Views
                     "Yes",
                     "No"))
             {
-                NumberToBlock.numberToBlock.Add(phNum);
+                Numbers numb = new Numbers();
+                numb.number = phNum;
+                numb.name = "Unkown";
+                numb.blockType = "blockThisNumber";
+                new NumbersViewModel(numb);
                 await this.DisplayAlert("Hurray!!!",phNum+" is blocked successfully!!!","OK");
                 await Navigation.PopModalAsync();
             }

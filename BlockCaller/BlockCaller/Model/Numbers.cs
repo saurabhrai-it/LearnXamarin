@@ -2,9 +2,9 @@
 
 namespace BlockCaller.Model
 {
-    public class NumberToBlock
+    public class Numbers
     {
-        [PrimaryKey,AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string number { get; set; }
         public string name { get; set; }

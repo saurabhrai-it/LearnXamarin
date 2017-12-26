@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Telephony;
 using BlockCaller.Views;
 using BlockCaller.Model;
+using BlockCaller.ViewModel;
 
 namespace BlockCaller.Droid
 {
@@ -19,6 +20,8 @@ namespace BlockCaller.Droid
     [IntentFilter(new[] { "android.intent.action.PHONE_STATE" },Priority =(int)IntentFilterPriority.HighPriority)]
     public class CallReciever : BroadcastReceiver
     {
+        List<string> tempList = GetNumberFromTable("PhoneNumber");
+
         public override void OnReceive(Context context, Intent intent)
         {
             if (intent.Extras != null)
@@ -29,24 +32,9 @@ namespace BlockCaller.Droid
                     string telephone = intent.GetStringExtra(TelephonyManager.ExtraIncomingNumber);
                     if (!string.IsNullOrEmpty(telephone))
                     {
-                        if (NumberToBlock.numberToBlock.IndexOf(telephone) > -1)
+                        if(tempList.Contains(telephone))
                         {
-
-                            var manager = (TelephonyManager)context.GetSystemService(Context.TelephonyService);
-
-                            IntPtr TelephonyManager_getITelephony = JNIEnv.GetMethodID(manager.Class.Handle,
-                                    "getITelephony",
-                                    "()Lcom/android/internal/telephony/ITelephony;");
-
-                            IntPtr telephony = JNIEnv.CallObjectMethod(manager.Handle, TelephonyManager_getITelephony);
-                            IntPtr ITelephony_class = JNIEnv.GetObjectClass(telephony);
-                            //IntPtr ITelephony_silentRinger = JNIEnv.GetMethodID(ITelephony_class, "silenceRinger", "()Z");
-                            //JNIEnv.CallBooleanMethod(telephony, ITelephony_silentRinger);
-                            IntPtr ITelephony_endCall = JNIEnv.GetMethodID(ITelephony_class,"endCall","()Z");
-                            JNIEnv.CallBooleanMethod(telephony, ITelephony_endCall);
-                            JNIEnv.DeleteLocalRef(telephony);
-                            JNIEnv.DeleteLocalRef(ITelephony_class);
-
+                            endCall(context);
                         }
                         //Toast.MakeText(context, "Incoming call from " + telephone + ".", ToastLength.Short).Show();
                     }
@@ -67,6 +55,36 @@ namespace BlockCaller.Droid
                     //Toast.MakeText(context, "Incoming call ended.", ToastLength.Short).Show();
                 }
             }
+        }
+
+        public void endCall(Context context)
+        {
+            var manager = (TelephonyManager)context.GetSystemService(Context.TelephonyService);
+
+            IntPtr TelephonyManager_getITelephony = JNIEnv.GetMethodID(manager.Class.Handle,
+                    "getITelephony",
+                    "()Lcom/android/internal/telephony/ITelephony;");
+
+            IntPtr telephony = JNIEnv.CallObjectMethod(manager.Handle, TelephonyManager_getITelephony);
+            IntPtr ITelephony_class = JNIEnv.GetObjectClass(telephony);
+            //IntPtr ITelephony_silentRinger = JNIEnv.GetMethodID(ITelephony_class, "silenceRinger", "()Z");
+            //JNIEnv.CallBooleanMethod(telephony, ITelephony_silentRinger);
+            IntPtr ITelephony_endCall = JNIEnv.GetMethodID(ITelephony_class, "endCall", "()Z");
+            JNIEnv.CallBooleanMethod(telephony, ITelephony_endCall);
+            JNIEnv.DeleteLocalRef(telephony);
+            JNIEnv.DeleteLocalRef(ITelephony_class);
+        }
+
+        public static List<string> GetNumberFromTable(string str)
+        {
+            List<string> getNumList = new List<string>();
+            var dbNum = new BlockDatabase(str); // Creates (if does not exist) a database named People
+            List<Numbers> temp = dbNum.Query<Numbers>("select * from Numbers where blockType = 'blockThisNumber'");
+            foreach (Numbers num in temp)
+            {
+                getNumList.Add(num.number);
+            }
+            return getNumList;
         }
     }
 }

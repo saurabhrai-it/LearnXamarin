@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Android.Widget;
+using BlockCaller.Model;
+using BlockCaller.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +19,14 @@ namespace BlockCaller.Views
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async Task getMyDataAsync(object sender, EventArgs e)
+        {
+            var allData = NumbersViewModel.GetDataFromTable("PhoneNumber");
+            foreach (Numbers num in allData)
+            {
+                await this.DisplayAlert("Hurray!!!", num.number + " is " + num.name, "OK");
+            }
+        }
+    }
 }

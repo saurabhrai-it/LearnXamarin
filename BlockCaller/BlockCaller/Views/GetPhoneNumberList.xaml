@@ -11,7 +11,7 @@
                       CachingStrategy="RecycleElement"
                       x:Name="CallLog"
                       IsPullToRefreshEnabled="True"
-                      ItemTapped="CallLog_ItemSelected"
+                      ItemSelected="CallLog_ItemSelected"
                       >
                <ListView.ItemTemplate>
                  <DataTemplate>
