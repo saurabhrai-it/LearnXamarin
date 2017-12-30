@@ -20,5 +20,10 @@
 			<category android:name="android.intent.category.DEFAULT" />
 		</intent-filter>-->
 	</receiver>
+  <!--<service android:exported="true" android:name="BlockCaller.Droid.FetchNumbersBackground">
+    <intent-filter>
+        <action android:name="BlockCaller.Droid.BlockedNumberList" />
+    </intent-filter>
+  </service>-->
 	<application android:label="BlockCaller" android:icon="@drawable/home"></application>
 </manifest>

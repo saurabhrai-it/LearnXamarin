@@ -7,7 +7,7 @@ using Xamarin.Forms.Xaml;
 
 namespace BlockCaller.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EnterNumberPage : ContentPage
 	{
 		public EnterNumberPage ()
@@ -31,6 +31,7 @@ namespace BlockCaller.Views
                 numb.blockType = "blockThisNumber";
                 new NumbersViewModel(numb);
                 await this.DisplayAlert("Hurray!!!",phNum+" is blocked successfully!!!","OK");
+          
                 await Navigation.PopModalAsync();
             }
         }
@@ -39,13 +40,5 @@ namespace BlockCaller.Views
         {
             await Navigation.PopModalAsync();
         }
-
-        //private void validatePhoneNumber(object sender, TextChangedEventArgs e)
-        //{
-        //    if(e.NewTextValue.Length>10)
-        //    {
-        //        Submit.Focus();
-        //    }
-        //}
     }
 }

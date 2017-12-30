@@ -122,9 +122,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlockDatabase.cs" />
     <Compile Include="CallReciever.cs" />
+    <Compile Include="FetchNumbersBackground.cs" />
     <Compile Include="GetCallLog.cs" />
+    <Compile Include="IntentServiceStarter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

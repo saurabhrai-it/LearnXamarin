@@ -40,6 +40,8 @@ namespace BlockCaller.Views
                 var enterNumberPage = new EnterNumberPage();
                 await Navigation.PushModalAsync(enterNumberPage);
             }
+            else
+                await Navigation.PopAsync();
         }
 
         private void BlockAllByStartDigit(object sender, EventArgs e)

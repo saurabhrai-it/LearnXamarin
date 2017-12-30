@@ -7,8 +7,6 @@ namespace BlockCaller.ViewModel
 {
     public class NumbersViewModel 
     {
-        static string blockerType1 = "blockThisNumber"; 
-
         public NumbersViewModel() { }
 
         public NumbersViewModel(Numbers num)

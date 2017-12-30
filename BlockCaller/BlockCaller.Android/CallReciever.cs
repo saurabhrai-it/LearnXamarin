@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
+using Android.Telephony;
 using Android.Views;
 using Android.Widget;
-using Android.Telephony;
-using BlockCaller.Views;
-using BlockCaller.Model;
 using BlockCaller.ViewModel;
+using System;
+using System.Collections.Generic;
 
 namespace BlockCaller.Droid
 {
@@ -20,7 +14,8 @@ namespace BlockCaller.Droid
     [IntentFilter(new[] { "android.intent.action.PHONE_STATE" },Priority =(int)IntentFilterPriority.HighPriority)]
     public class CallReciever : BroadcastReceiver
     {
-        List<string> tempList = GetNumberFromTable("PhoneNumber");
+        
+        List<string> tempList = NumbersViewModel.GetNumberFromTable("PhoneNumber");
 
         public override void OnReceive(Context context, Intent intent)
         {
@@ -73,18 +68,6 @@ namespace BlockCaller.Droid
             JNIEnv.CallBooleanMethod(telephony, ITelephony_endCall);
             JNIEnv.DeleteLocalRef(telephony);
             JNIEnv.DeleteLocalRef(ITelephony_class);
-        }
-
-        public static List<string> GetNumberFromTable(string str)
-        {
-            List<string> getNumList = new List<string>();
-            var dbNum = new BlockDatabase(str); // Creates (if does not exist) a database named People
-            List<Numbers> temp = dbNum.Query<Numbers>("select * from Numbers where blockType = 'blockThisNumber'");
-            foreach (Numbers num in temp)
-            {
-                getNumList.Add(num.number);
-            }
-            return getNumList;
         }
     }
 }

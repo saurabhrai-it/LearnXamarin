@@ -1,10 +1,9 @@
-﻿using System;
+﻿using BlockCaller.db;
+using BlockCaller.Model;
+using SQLite;
 using System.Collections.Generic;
 using System.Linq;
-using SQLite;
 using Xamarin.Forms;
-using BlockCaller.db;
-using BlockCaller.Model;
 
 namespace BlockCaller
 {

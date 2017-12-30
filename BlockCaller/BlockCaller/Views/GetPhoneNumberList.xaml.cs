@@ -23,20 +23,20 @@ namespace BlockCaller.Views
             if (e.SelectedItem == null)
                 return;
             var selectedItem = e.SelectedItem as PhoneNumber;
-            await DisplayAlert("Block "+ selectedItem.NameInCallLog+" !","Phone Number :  "+selectedItem.phoneNumberofCallLog+" ?", "OK","Cancel");
-            //NumberToBlock.numberToBlock.Add(selectedItem.phoneNumberofCallLog);
+            if (await this.DisplayAlert(
+                     "Confirmation",
+                     "Do you want to block " + selectedItem.NameInCallLog+ " : " + selectedItem.phoneNumberofCallLog + "?",
+                     "Yes",
+                     "No"))
+            {
+                Numbers numb = new Numbers();
+                numb.number = selectedItem.phoneNumberofCallLog;
+                numb.name = selectedItem.NameInCallLog;
+                numb.blockType = "blockThisNumber";
+                new NumbersViewModel(numb);
+                await DisplayAlert("Aha!" + selectedItem.NameInCallLog + " : " + selectedItem.phoneNumberofCallLog + " blocked!", "OK", null);
+            }
+            await Navigation.PopModalAsync();
         }
-
-        //async void Handle_ItemTapped(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    var selectedLog = e.SelectedItem as PhoneNumber;
-        //    if (e.SelectedItem == null)
-        //        return;
-
-        //    await DisplayAlert("Aha!",String.Format("You selected {0} {1}",selectedLog.NameInCallLog,selectedLog.phoneNumberofCallLog), "OK");
-
-        //    //Deselect Item
-        //    ((ListView)sender).SelectedItem = null;
-        //}
     }
 }
